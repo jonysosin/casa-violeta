@@ -1,0 +1,16 @@
+{
+  "name": "casa-violeta",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "http-server": "^0.11.1",
+    "local-web-server": "^2.6.1",
+    "normalize.css": "^8.0.1"
+  }
+}
