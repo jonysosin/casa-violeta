@@ -12,11 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // App\Configuration::create([ 'key' => 'copyright', 'value' => 'TODOS LOS DERECHOS RESERVADOS. CASAVIOLETA* 2018' ]);
+    return view('welcome', ['title' => 'All pages']);
 });
 
-
-Route::get('/home', function () {
-    return view('welcome');
+Route::get('/quienes', function () {
+    return view('welcome', ['title' => 'Home']);
 });
 
+Route::get('/producto/{productId}', 'ProductController@showProduct');
+Route::get('/{pageName}', 'StaticPageController@show');
