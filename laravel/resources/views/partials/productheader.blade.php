@@ -4,7 +4,14 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <meta name="viewport" content="width=device-width, user-scalable=no">
     </head>
-    <body>
+    <?php 
+    $extraClass = '';
+    if (isset($bodyExtraClass)) {
+        $extraClass = 'class="' . $bodyExtraClass . '"';
+    }
+    ?>
+
+    <body <?php echo $extraClass; ?> >
         <div class="page-container">
             <header>
                 <ul class="columns">
@@ -55,6 +62,6 @@
                             </li>
                         <?php endforeach; ?>
                     </ul>
-                    <h1>Lociones</h1>
+                    <h1><?php echo $productCategoryName; ?></h1>
                 </div>
             </header>

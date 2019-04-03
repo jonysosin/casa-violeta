@@ -8343,6 +8343,11 @@ button.close {
   src: url("/../fonts/GOTHAM-BOLD_0.TTF");
 }
 
+@font-face {
+  font-family: gothamBook;
+  src: url("/../fonts/Gotham-Book.ttf");
+}
+
 .page-container {
   max-width: 1280px;
 }
@@ -8386,6 +8391,7 @@ header .header-wave #products-categories-list {
   display: block;
   margin: 0 auto;
   text-align: center;
+  z-index: 1;
 }
 
 header .header-wave #products-categories-list li {
@@ -8592,6 +8598,30 @@ footer {
   position: relative;
 }
 
+footer .footer-extra {
+  text-align: center;
+  padding-top: 130px;
+  max-width: 50%;
+  margin: auto;
+}
+
+footer .footer-extra .footer-title {
+  font-family: gothamBold;
+  color: #691087;
+  text-transform: uppercase;
+  font-size: 35px;
+  border-bottom: 1px solid #AAAAAA;
+  padding-bottom: 10px;
+}
+
+footer .footer-extra .footer-detail {
+  display: block;
+  color: #2B2B2B;
+  line-height: 16px;
+  padding-top: 20px;
+  font-size: 16px;
+}
+
 footer .copyright {
   position: absolute;
   bottom: 0;
@@ -8609,5 +8639,91 @@ footer .social {
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
+}
+
+/* Page Styles */
+
+.product-page header .header-wave {
+  margin-bottom: 345px;
+}
+
+.product-page .product-page-content {
+  max-width: 1128px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.product-page .product-page-content #product-image-container {
+  background: white;
+  width: 534px;
+  height: 534px;
+  border-radius: 20px;
+  border: 1px solid #C9C9C9;
+}
+
+.product-page .product-page-content #product-image-container,
+.product-page .product-page-content #product-details-container {
+  display: inline-block;
+}
+
+.product-page .product-page-content #product-details-container {
+  padding-left: 45px;
+  position: relative;
+  top: 0;
+  display: inline-block;
+  max-width: calc( 1128px - 570px);
+  width: 100%;
+  vertical-align: top;
+}
+
+.product-page .product-page-content #product-details-container .product-title {
+  font-family: gothamBold;
+  color: #691087;
+  text-transform: uppercase;
+  font-size: 40px;
+  padding: 0;
+  line-height: 40px;
+  margin-top: 130px;
+  margin-bottom: 0;
+}
+
+.product-page .product-page-content #product-details-container .product-subtitle {
+  font-family: gothamBook;
+  font-size: 12px;
+  margin-top: 8px;
+  display: block;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #AAAAAA;
+}
+
+.product-page .product-page-content #product-details-container .product-detail {
+  font-family: gothamLight;
+  font-size: 16px;
+  color: #3D3D3D;
+  line-height: 16px;
+  padding-top: 10px;
+}
+
+.product-page .product-page-content #product-details-container .product-price {
+  font-family: gothamBold;
+  color: #691087;
+  text-transform: uppercase;
+  font-size: 70px;
+  margin-top: 5px;
+  display: inline-block;
+}
+
+.product-page .product-page-content #product-details-container .product-buy-link {
+  width: 190px;
+  height: 45px;
+  background: #691087;
+  font-family: gothamLight;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  border-radius: 15px;
+  padding: 10px 55px;
+  display: block;
+  margin-top: -15px;
 }
 
