@@ -36,7 +36,24 @@ class StaticPageController extends Controller
      */
     public function show (Request $request, $seoUrl = null)
     {
+        if ($seoUrl === 'contacto') {
+            if ($request->isMethod('post')) {
+                $parameters = $request->all();
+                dd($parameters);
+            }
 
+            return view('contact',
+            [
+                'pageTitle' => 'Contacto',
+                'headerIcon' => 'contact.png',
+                'bodyExtraClass' => 'static-page contact-page'
+            ]);
+        }
+
+        $staticPage = StaticPage::where('seoUrl', $seoUrl)->first();
+
+        return view('staticpage', ['pageTitle' => $staticPage->title,
+        'bodyExtraClass' => 'static-page']);
         // StaticPage::create([
         //     'title' => 'Quienes Somos.',
         //     'seoUrl' => 'quienes-somos',
@@ -44,11 +61,7 @@ class StaticPageController extends Controller
         //     'longDescription' => 'This is long.',
         // ]);
 
-        $staticPage = StaticPage::where('seoUrl', $seoUrl)->first();
-
-        // dd($staticPage, $staticPage->title);
-
-        return view('staticpage', ['pageTitle' => $staticPage->title]);
+        
     }
 
     /**

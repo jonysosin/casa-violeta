@@ -1,0 +1,120 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+
+@font-face {
+    font-family: gothamLight;
+    src: url('/../fonts/GOTHAM-LIGHT_0.TTF');
+}
+
+@font-face {
+    font-family: gothamBold;
+    src: url('/../fonts/GOTHAM-BOLD_0.TTF');
+}
+
+@font-face {
+    font-family: gothamBook;
+    src: url('/../fonts/Gotham-Book.ttf');
+}
+
+body {
+    font-family: gothamLight;
+}
+
+.admin-page {
+    .admin-header {
+        background: #691087;
+        color: #fff;
+        padding: 20px 5px;
+    }
+
+    .page-content {
+        .content-left,
+        .content-right {
+            display: inline-block;
+            vertical-align: top;
+            height: 100%;
+        }
+
+        .content-left {
+            width: 20%;
+            background: #eeeeee;
+        }
+
+        .content-right {
+            width: 79%;
+        }
+    }
+
+    #admin-footer {
+        background: #000;
+        padding: 10px;
+        color: #fff;
+    }
+
+    #admin-menu {
+        padding: 0;
+        margin: 0;
+
+        li {
+            padding: 10px;
+            border-bottom: 1px solid #000;
+            transition: 0.4s ease;
+            font-family: gothamBold;
+
+            &:hover,
+            &.selected {
+                transition: 0.4s ease;
+                background: #000;
+                font-weight: bold;
+
+                a {
+                    color: #fff;
+                }
+            }
+
+            a {
+                color: #000;
+                text-decoration: none;
+            }
+        }
+    }
+
+    #listing-table {
+        margin-top: 10px;
+        margin-top: 10px;
+        font-size: 13px;
+        width: 100%;
+    
+        
+        thead {
+            border-bottom: 1px solid #000;
+            padding-bottom: 20px;
+            position: relative;
+
+            th {
+                padding-bottom: 5px;
+                text-transform: uppercase;
+                font-family: gothamBold;
+            }
+        }
+
+        tbody {
+            .listing-item {
+                &:hover {
+                    background: #eeeeee;
+                }
+            }
+
+            td {
+                padding: 10px 5px;
+                vertical-align: top;
+            }
+        }
+    }
+}

@@ -11,4 +11,39 @@
             </footer>
         </div>
     </body>
+    <script src="{{ asset('js/jquery.js') }}"></script>
+    <script src="{{ asset('owl/dist/owl.carousel.min.js') }}"></script>
+    <script>
+        // if (!!document.querySelector('#owl-slider')) {
+        //     $(document).ready(function(){
+        //         $('#owl-slider').owlCarousel({
+        //             loop:true,
+        //             margin:10,
+        //             nav:true,
+        //             responsive:{
+        //                 0:{
+        //                     items:1
+        //                 },
+        //                 600:{
+        //                     items:3
+        //                 },
+        //                 1000:{
+        //                     items:5
+        //                 }
+        //             }
+        //         })
+        //     });
+        // }
+        
+
+        $(document).ready(function(){
+                $(".owl-carousel").owlCarousel({
+                    loop:true,
+                    nav: true,
+                    items: 1
+                })
+            });
+
+    </script>
+    <script src="{{ asset('js/site.js') }}"></script>
 </html>

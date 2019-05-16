@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\StaticPage;
+use App\Category;
+use App\Product;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -28,39 +31,72 @@ class ProductController extends Controller
         $this->middleware('guest');
     }
 
-    public function showProduct (Request $request, $productId = null) {
+    public function getCategories () {
+        return Category::where('active', true)->get();
+    }
+
+    public function showProducts (Request $request) {
         /** View Properties */
-        $productCategoryName = 'Lociones';
-        $categories = [];
-        $bodyExtraClass = 'product-page';
-        $product = new \stdClass();
-        $footerTitle = 'COMO USAR LAS LOCIONES:';
-        $footerDetail = 'Rociarlas sobre nuestra cabeza y dejar que caigan como lluvia en nuestra aura. También podemos pulverizar un poco en nuestra palma y frotar en zonas específicas que sintamos lo necesitan de acuerdo al caso (sienes, detrás de las orejas, espalda, riñones, detrás de rodillas o tobillos, plantas, etc.). Se potencian aún más si repetimos al menos 3 veces el nombre de la loción en voz alta.';
+        $title = 'Productos';
+        $products = Product::orderBy('isPromo', 'desc')->get();
         /** View Properties */
 
-        $category = new \stdClass();
-        $category->name = 'Lociones';
-        $category->href = 'asasa';
-        $category->img = asset('img/categories/lociones.png');
+        // // $product = new \stdClass();
+        // // $product->name = 'YO SOY EL QUE YO SOY';
+        // // $product->subTitle = 'Meditación, Creatividad, Inspiración y Conexión Superior';
+        // // $product->link = '/producto/1';
+        // // $product->isPromo = true;
 
-        $categories[] = $category;
-        $categories[] = $category;
-        $categories[] = $category;
-        $categories[] = $category;
+        // $products[] = $product;
+        // $products[] = $product;
+        // $products[] = $product;
 
-        $product->name = 'YO SOY EL QUE YO SOY';
-        $product->subTitle = 'MEDITACIÓN, CREATIVIDAD, INSPIRACIÓN, CONEXIÓN SUPERIOR';
-        $product->detail = 'Ideal para meditar, realizar trabajos espirituales, estudiar, crear… Nos conecta con nuestra Amada Presencia permitiendo la “inspiración”. Repite el nombre de la locion al rociar.';
-        $product->price = 350;
-        $product->buyLink = 'http://google.com';
+        // $productB = clone($product);
+        // $productB->isPromo = false;
+        // $products[] = $productB;
+        // $products[] = $productB;
+        // $products[] = $productB;
+
+
+        return view('categoryPage', [
+            'categories' => $this->getCategories(),
+            'categoryName' => strtoupper($title),
+            'title' => $title,
+            'products' => $products,
+            'pageTitle' => strtoupper($title),
+            'bodyExtraClass' => 'category-list',
+        ]);
+    }
+
+    public function showCategoryProducts (Request $request, $categorySeo = null) {
+        $products = [];
+        $category = Category::where('seo', $categorySeo)->first();
+        if ($category) {
+            $products = Product::where('category', $category->id)->get();
+        }
+        
+        return view('categoryPage', [
+            'categories' => $this->getCategories(),
+            'categoryName' => $category->name,
+            'title' => $category->name,
+            'products' => $products,
+            'pageTitle' => $category->name,
+            'bodyExtraClass' => 'category-list',
+        ]);
+    }
+
+    public function showProduct (Request $request, $productName = null, $productId = null) {
+        $product = Product::where('id', $productId)->first();
+        $category = Category::where('id', $product->category)->first();
         
         return view('productPage', [
-            'categories' => $categories,
-            'productCategoryName' => $productCategoryName,
-            'bodyExtraClass' => $bodyExtraClass,
+            'categories' => $this->getCategories(),
+            'pageTitle' => $category->name,
+            'title' => $product->name,
+            'bodyExtraClass' => 'product-page product-' . Str::slug($product->name),
             'product' => $product,
-            'footerTitle' => $footerTitle,
-            'footerDetail' => $footerDetail,
+            'footerTitle' => $category->footerTitle,
+            'footerDetail' => $category->footerDetail,
         ]);
     }
 
